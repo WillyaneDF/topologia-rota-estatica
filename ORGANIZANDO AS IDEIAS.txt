@@ -1,0 +1,38 @@
+
+NOME DO DISPOSITIVO	ENDEREÇO IP	INTERFACE	DESCRIÇÃO
+
+
+RT-SP	1º IP DA REDE	s0/0/0	CONECTADA A INTERFACE s0/0/0 DO RT-RJ
+        200.200.100.1 
+RT-SP	1º IP DA REDE	s0/0/1	CONECTADA A INTERFACE s0/0/0 DO RT-MG
+        200.200.100.5   
+
+
+________________________________________________________________________
+
+
+RT-RJ	2º IP DA REDE	s0/0/0	CONECTADA A INTERFACE s0/0/0 DO RT-SP
+        200.200.100.2   
+RT-RJ	1º IP DA REDE	s0/0/1	CONECTADA A INTERFACE s0/0/1 DO RT-MG
+        200.200.100.9 
+
+
+
+_________________________________________________________________________
+
+RT-MG	2º IP DA REDE	s0/0/0	CONECTADA A INTERFACE s0/0/1 DO RT-SP
+        200.200.100.6  
+RT-MG	2º IP DA REDE	s0/0/1	CONECTADA A INTERFACE s0/0/1 DO RT-RJ
+        200.200.100.10 
+
+
+
+
+
+
+
+
+
+
+
+

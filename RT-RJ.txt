@@ -1,0 +1,50 @@
+enable
+configure terminal
+hostname RT-RJ
+enable secret  batata*enable
+banner motd "ATENCAO! APENAS O DEPARTAMENTO DE TI TEM A AUTORIZACAO PARA ACESSAR ESSE EQUIPAMENTO!"
+no ip domain-lookup
+line console 0
+password batata*console
+login
+exit
+ip domain-name batata.local
+crypto key generate rsa general-key modulus 1024
+line vty 0 15
+transport input ssh
+password batata*VTY
+login
+exit
+interface gigabitethernet 0/0
+description CONECTADA A INTERFACE G0/1 DO SW-RJ
+ip address 172.16.0.1 255.255.248.0
+no shutdown
+exit
+interface serial 0/0/0
+description CONECTADA A INTERFACE s0/0/0 DO RT-SP
+ip address 200.200.100.2 255.255.255.252
+no shutdoWn
+exit
+interface serial 0/0/1
+description CONECTADA A INTERFACE s0/0/1 DO RT-MG
+ip address 200.200.100.9 255.255.255.252
+no shutdown
+exit
+service password-encryption 
+username userbatata privilege 15 secret batata*00
+line vty 0 15 
+login local
+exit
+line console 0
+login local
+exit
+security password min-length 8
+login block-for 120 attempts 3 within 60
+ip route 172.16.8.0 255.255.252.0 200.200.100.1
+ip route 172.16.12.0 255.255.255.128 200.200.100.10
+ip route 172.16.12.0 255.255.255.128 200.200.100.1
+ip route 172.16.8.0 255.255.252.0 200.200.100.10
+ip route 200.200.100.4 255.255.255.252 200.200.100.1
+ip route 200.200.100.4 255.255.255.252 200.200.100.10
+do wr
+exit
